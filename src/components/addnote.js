@@ -1,23 +1,47 @@
-import React from 'react';
-import './styles/addnote.css'
+import React from "react";
+import "./styles/addnote.css";
+import StoreContext from "../context/StoreContext";
 
-function AddNote(){
-    return(
-        <form>
-            <label>Name:</label>
-            <input type="text" name="new-note-name" placeholder="New Note"/>
+class AddNote extends React.Component {
+  static contextType = StoreContext;
 
-            <label>Content:</label>
-            <input type="text" name="new-note-content" placeholder="Blah Blah Blah"/>
+  render() {
+    return (
+      <form onSubmit={e => this.context.newNote(e)}>
+        <label htmlFor="new-note-name">Name:</label>
+        <input
+          type="text"
+          name="new-note-name"
+          placeholder="New Note"
+          onChange={e => this.context.newNoteName(e.target.value)}
+        />
 
-            <label>Pick an Existing Folder:</label>
-            <select>
-                <option></option>
-            </select>
+        <label htmlFor="new-note-content">Content:</label>
+        <input
+          type="text"
+          name="new-note-content"
+          placeholder="Blah Blah Blah"
+          onChange={e => this.context.newNoteContent(e.target.value)}
+        />
 
-            <button type="submit">Add New Note</button>
-        </form>
-    )
+        <label htmlFor="new-note-folder">Folder:</label>
+        <select onChange={e => this.context.newNoteFolder(e.target.value)}>
+          <option value="Pick an Existing Folder">
+            Pick an Existing Folder
+          </option>
+
+          {this.context.folders.map(folder => (
+            <option key={folder.id} value={folder.id}>
+                {folder.name}
+                </option>
+          ))}
+
+        </select>
+
+        <button type="submit">Add New Note</button>
+      </form>
+    );
+  }
 }
 
 export default AddNote;
