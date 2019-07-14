@@ -8,6 +8,7 @@ import Header from "./components/header";
 import Note from "./components/note";
 import StoreContext from "./context/StoreContext";
 import {withRouter} from 'react-router-dom';
+import AddFolder from './components/addfolder'
 
 class App extends React.Component {
   state = {
@@ -100,6 +101,11 @@ class App extends React.Component {
             path="/note/:noteId"
             component={Note}
           />
+
+          <Route 
+            exact path="/addfolder"
+            component={AddFolder}
+            />
         </div>
       </StoreContext.Provider>
     );

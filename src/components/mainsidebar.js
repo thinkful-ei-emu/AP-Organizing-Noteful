@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './styles/mainsidebar.css'
 import StoreContext from '../context/StoreContext'
+import {Link} from 'react-router-dom';
 
 class MainSideBar extends React.Component {
 
@@ -24,7 +25,9 @@ class MainSideBar extends React.Component {
             <nav>
                 {folderList}
             </nav>
-            <button className="add-button">Add Folder</button>
+            <Link to="/addfolder">
+            <button className="add-button" >Add Folder</button>
+            </Link>
         </div>
     )
 }
