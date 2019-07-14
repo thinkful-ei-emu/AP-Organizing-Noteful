@@ -24,7 +24,7 @@ class AddNote extends React.Component {
           onChange={e => this.context.newNoteContent(e.target.value)}
         />
 
-        <label htmlFor="new-note-folder">Folder:
+        <label htmlFor="new-note-folder">Folder:</label>
         <select onChange={e => this.context.newNoteFolder(e.target.value)}>
           <option value="Pick an Existing Folder">
             Pick an Existing Folder
@@ -37,7 +37,7 @@ class AddNote extends React.Component {
           ))}
 
         </select>
-        </label>
+        
 
         <button type="submit">Add New Note</button>
       </form>
