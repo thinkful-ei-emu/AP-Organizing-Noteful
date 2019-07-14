@@ -178,7 +178,7 @@ class App extends React.Component {
           newFolder: this.handleAddNewFolder,
           newNoteName: this.setNewNoteName,
           newNoteContent: this.setNewNoteContent,
-          newNoteFolder: this.setNewFolderName,
+          newNoteFolder: this.setNewNoteFolder,
           newNote: this.handleAddNewNote,
         }}
       >
