@@ -14,6 +14,7 @@ class App extends React.Component {
   state = {
     folders: [],
     notes: [],
+    newFolderName: '',
   };
 
   componentDidMount() {
@@ -68,13 +69,54 @@ class App extends React.Component {
       
   }
 
+  setNewFolderName = (newFolder) =>{
+    this.setState({
+      newFolderName: newFolder
+    })
+
+  }
+
+  handleAddNewFolder = (e) =>{
+
+    e.preventDefault()
+
+    const newFolder = {
+      name: this.state.newFolderName
+    }
+
+   return fetch('http://localhost:9090/folders', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newFolder)
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error(res.statusText);
+    })
+    .then(resJson => {
+      this.setState({
+        folders: [...this.state.folders, newFolder]
+      },() =>this.props.history.goBack());
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+  }
+
   render() {
     return (
       <StoreContext.Provider
         value={{
           folders: this.state.folders,
           notes: this.state.notes,
-          delete: this.handleDelete
+          delete: this.handleDelete,
+          newFolderName: this.setNewFolderName,
+          newFolder: this.handleAddNewFolder
         }}
       >
         <div className="App">
