@@ -138,6 +138,7 @@ class App extends React.Component {
       name: this.state.newNoteName,
       content: this.state.newNoteContent,
       folderId: this.state.newNoteFolder,
+      modified: new Date(),
     };
 
     return fetch("http://localhost:9090/notes", {
