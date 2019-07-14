@@ -1,0 +1,16 @@
+form{
+    text-align: center;
+}
+
+.new-folder-input{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 1%;
+    font-size: 15px;
+}
+
+.new-folder-label{
+    font-size: 30px;
+}
