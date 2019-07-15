@@ -1,0 +1,22 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    padding: auto;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.add-note-button{
+    margin-top: 50px;
+}
+
+label{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 30px;
+}

@@ -40,7 +40,7 @@ class AddNote extends React.Component {
         </select>
         
 
-        <button type="submit">Add New Note</button>
+        <button type="submit" className="add-note-button">Add New Note</button>
       </form>
     );
   }
