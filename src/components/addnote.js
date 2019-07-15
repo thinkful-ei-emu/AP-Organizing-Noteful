@@ -14,6 +14,7 @@ class AddNote extends React.Component {
           name="new-note-name"
           placeholder="New Note"
           onChange={e => this.context.newNoteName(e.target.value)}
+          required
         />
 
         <label htmlFor="new-note-content">Content:</label>

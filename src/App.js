@@ -10,6 +10,7 @@ import StoreContext from "./context/StoreContext";
 import { withRouter } from "react-router-dom";
 import AddFolder from "./components/addfolder";
 import AddNote from './components/addnote'
+import ErrorBoundryNotes from "./components/errorboundrynotes";
 
 class App extends React.Component {
   state = {
@@ -185,7 +186,9 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Route exact path="/" component={MainSideBar} />
+          <ErrorBoundryNotes>
           <Route exact path="/" component={Main} />
+    
           <Route
             exact
             path="/folder/:folderId"
@@ -196,12 +199,13 @@ class App extends React.Component {
               </>
             )}
           />
-
           <Route exact path="/note/:noteId" component={Note} />
+          </ErrorBoundryNotes>
 
           <Route exact path="/addfolder" component={AddFolder} />
 
           <Route exact path="/addnote" component={AddNote} />
+          
         </div>
       </StoreContext.Provider>
     );
