@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './styles/mainsidebar.css'
 import StoreContext from '../context/StoreContext'
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class MainSideBar extends React.Component {
 
@@ -31,6 +32,12 @@ class MainSideBar extends React.Component {
         </div>
     )
 }
+
 }
+
+MainSideBar.propTypes = {
+    folders: PropTypes.array
+};
+
 
 export default MainSideBar;

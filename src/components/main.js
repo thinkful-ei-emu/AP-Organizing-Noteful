@@ -2,8 +2,9 @@ import React from 'react';
 import NoteList from './notelist';
 import './styles/main.css'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-function Main (props) {
+export default function Main (props) {
 
     return(
         <div>
@@ -15,4 +16,6 @@ function Main (props) {
     )
 }
 
-export default Main
+Main.propTypes = {
+    match: PropTypes.object
+};

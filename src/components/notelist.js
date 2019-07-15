@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './styles/notelist.css'
 import StoreContext from '../context/StoreContext'
+import PropTypes from 'prop-types';
+
 
 
 class NoteList extends React.Component {
@@ -54,5 +56,11 @@ class NoteList extends React.Component {
 
 }
 }
+
+NoteList.propTypes = {
+    notes: PropTypes.array,
+    url: PropTypes.string,
+    
+};
 
 export default NoteList;

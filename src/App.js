@@ -186,7 +186,9 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Route exact path="/" component={MainSideBar} />
+
           <ErrorBoundryNotes>
+
           <Route exact path="/" component={Main} />
     
           <Route
@@ -200,12 +202,13 @@ class App extends React.Component {
             )}
           />
           <Route exact path="/note/:noteId" component={Note} />
+          
           </ErrorBoundryNotes>
 
           <Route exact path="/addfolder" component={AddFolder} />
 
           <Route exact path="/addnote" component={AddNote} />
-          
+
         </div>
       </StoreContext.Provider>
     );

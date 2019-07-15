@@ -1,6 +1,8 @@
 import React from "react";
 import "./styles/note.css";
 import StoreContext from "../context/StoreContext";
+import PropTypes from 'prop-types';
+
 
 class Note extends React.Component {
   static contextType = StoreContext;
@@ -69,5 +71,12 @@ class Note extends React.Component {
     );
   }
 }
+
+Note.propTypes = {
+  notes: PropTypes.array,
+  folders: PropTypes.array,
+  url: PropTypes.string,
+  history: PropTypes.object,
+};
 
 export default Note;
