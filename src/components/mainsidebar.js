@@ -24,7 +24,9 @@ class MainSideBar extends React.Component {
     return (
         <div className="nav-container">
             <nav>
+                <ul>
                 {folderList}
+                </ul>
             </nav>
             <Link to="/addfolder">
             <button className="add-button" >Add Folder</button>

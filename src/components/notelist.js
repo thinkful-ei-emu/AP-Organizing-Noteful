@@ -45,12 +45,16 @@ class NoteList extends React.Component {
     if (this.props.match.url === '/') {
         return (
             <div className="note-list">
+                <ul>
                 {noteList}
+                </ul>
             </div>
         )
     } else return (
         <div className="note-list">
+            <ul>
             {filteredNoteList}
+            </ul>
         </div>
     )
 
