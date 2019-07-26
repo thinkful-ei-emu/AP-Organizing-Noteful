@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //fetch request
-    fetch("http://localhost:9090/folders")
+    fetch("http://localhost:8000/folders")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -39,7 +39,7 @@ class App extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    fetch("http://localhost:9090/notes")
+    fetch("http://localhost:8000/notes")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   handleDelete = noteId => {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -85,10 +85,10 @@ class App extends React.Component {
     e.preventDefault();
 
     const newFolder = {
-      name: this.state.newFolderName
+      folder_title: this.state.newFolderName
     };
 
-    return fetch("http://localhost:9090/folders", {
+    return fetch("http://localhost:8000/folders", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -136,13 +136,13 @@ class App extends React.Component {
     e.preventDefault();
 
     const newNote = {
-      name: this.state.newNoteName,
+      note_title: this.state.newNoteName,
       content: this.state.newNoteContent,
-      folderId: this.state.newNoteFolder,
+      folder_id: this.state.newNoteFolder,
       modified: new Date(),
     };
 
-    return fetch("http://localhost:9090/notes", {
+    return fetch("http://localhost:8000/notes", {
       method: "POST",
       headers: {
         "content-type": "application/json"

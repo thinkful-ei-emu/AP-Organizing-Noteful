@@ -38,7 +38,7 @@ class AddNote extends React.Component {
 
           {this.context.folders.map(folder => (
             <option key={folder.id} value={folder.id}>
-                {folder.name}
+                {folder.folder_title}
                 </option>
           ))}
 

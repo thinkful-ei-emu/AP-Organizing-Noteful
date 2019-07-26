@@ -23,7 +23,7 @@ class Note extends React.Component {
     const convertedDate = date.toDateString();
 
     const folder = this.context.folders.find(folder => {
-      if (folder.id === note.folderId) {
+      if (folder.id === note.folder_id) {
         return true;
       } else return false;
     });
@@ -55,11 +55,11 @@ class Note extends React.Component {
           >
             Go Back
           </button>
-          <h2 className="folder-name">{folder.name}</h2>
+          <h2 className="folder-name">{folder.folder_title}</h2>
         </div>
 
         <div className="expanded-note">
-          <h2 className="note-name">{note.name}</h2>
+          <h2 className="note-name">{note.note_title}</h2>
           <p>Date Modified On: {convertedDate}</p>
           <button type="button" onClick={() => this.context.delete(note.id)}>
             Delete Note

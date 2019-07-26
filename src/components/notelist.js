@@ -13,14 +13,14 @@ class NoteList extends React.Component {
     render(){
 
     const filteredNoteList = this.context.notes
-        .filter(note => `/folder/${note.folderId}` === this.props.match.url)
+        .filter(note => `/folder/${note.folder_id}` === this.props.match.url)
         .map(note => {
             const date = new Date(note.modified)
         const convertedDate = date.toDateString()
             return (
                 <li key={note.id}>
                     <Link to={`/note/${note.id}`}>
-                    <h2>{note.name}</h2>
+                    <h2>{note.note_title}</h2>
                     </Link>
                     <p>Date Modified On: {convertedDate}</p>
                     <button type="button" className="delete-button" onClick={()=>this.context.delete(note.id)}>Delete Note</button>
@@ -34,7 +34,7 @@ class NoteList extends React.Component {
         return (
             <li key={note.id}>
                 <Link to={`/note/${note.id}`}>
-                <h2>{note.name}</h2>
+                <h2>{note.note_title}</h2>
                 </Link>
                 <p>Date Modified On: {convertedDate}</p>
                 <button type="button" className="delete-button" onClick={() => this.context.delete(note.id)}>Delete Note</button>

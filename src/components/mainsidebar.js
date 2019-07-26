@@ -16,7 +16,7 @@ class MainSideBar extends React.Component {
         return(
             <li key={folder.id} className="nav-list">
                 <NavLink to={`/folder/${folder.id}`} style={{ textDecoration: 'none' }}>
-                  {folder.name}
+                  {folder.folder_title}
                 </NavLink>
             </li>
         )
