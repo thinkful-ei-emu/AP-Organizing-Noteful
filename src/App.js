@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //fetch request
-    fetch("http://localhost:8000/folders")
+    fetch("https://evening-spire-18611.herokuapp.com/folders")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -39,7 +39,7 @@ class App extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    fetch("http://localhost:8000/notes")
+    fetch("https://evening-spire-18611.herokuapp.com/notes")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   handleDelete = noteId => {
-    fetch(`http://localhost:8000/notes/${noteId}`, {
+    fetch(`https://evening-spire-18611.herokuapp.com/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -88,7 +88,7 @@ class App extends React.Component {
       folder_title: this.state.newFolderName
     };
 
-    return fetch("http://localhost:8000/folders", {
+    return fetch("https://evening-spire-18611.herokuapp.com/folders", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -142,7 +142,7 @@ class App extends React.Component {
       modified: new Date(),
     };
 
-    return fetch("http://localhost:8000/notes", {
+    return fetch("https://evening-spire-18611.herokuapp.com/notes", {
       method: "POST",
       headers: {
         "content-type": "application/json"

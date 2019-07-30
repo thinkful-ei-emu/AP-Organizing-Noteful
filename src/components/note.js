@@ -12,9 +12,6 @@ class Note extends React.Component {
       note => `/note/${note.id}` === this.props.match.url
     );
 
-    //   props.notes
-    //     .filter(note => `/note/${note.id}` === props.match.url)
-    //     .map(note => {
     if (!note) {
       return "page not found";
     }
@@ -27,24 +24,6 @@ class Note extends React.Component {
         return true;
       } else return false;
     });
-
-    //         console.log(folder.name);
-
-    //   return (
-    //     <div key={note.id}>
-    //       <button>Go Back</button>
-    //       <h2>{folder.name}</h2>
-
-    //       <div>
-    //         <h2>{note.name}</h2>
-    //         <p>Date Modified On: {convertedDate}</p>
-    //         <button type="click">Delete Note</button>
-    //       </div>
-
-    //       <p>{note.content}</p>
-
-    //     </div>
-    //   );
 
     return (
       <div key={note.id}>
