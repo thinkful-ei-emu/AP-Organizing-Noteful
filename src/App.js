@@ -9,7 +9,7 @@ import Note from "./components/note";
 import StoreContext from "./context/StoreContext";
 import { withRouter } from "react-router-dom";
 import AddFolder from "./components/addfolder";
-import AddNote from './components/addnote'
+import AddNote from "./components/addnote";
 import ErrorBoundryNotes from "./components/errorboundrynotes";
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
     newFolderName: "",
     newNoteName: "",
     newNoteContent: "",
-    newNoteFolder: "",
+    newNoteFolder: ""
   };
 
   componentDidMount() {
@@ -109,6 +109,20 @@ class App extends React.Component {
           () => this.props.history.goBack()
         );
       })
+      .then(() => {
+        return fetch("https://evening-spire-18611.herokuapp.com/folders")
+          .then(res => {
+            if (res.ok) {
+              return res.json();
+            }
+            throw new Error(res.statusText);
+          })
+          .then(resJson => {
+            this.setState({
+              folders: resJson
+            });
+          });
+      })
       .catch(error => {
         console.log(error);
       });
@@ -139,7 +153,7 @@ class App extends React.Component {
       note_title: this.state.newNoteName,
       content: this.state.newNoteContent,
       folder_id: this.state.newNoteFolder,
-      modified: new Date(),
+      modified: new Date()
     };
 
     return fetch("https://evening-spire-18611.herokuapp.com/notes", {
@@ -160,13 +174,27 @@ class App extends React.Component {
           {
             notes: [...this.state.notes, newNote]
           },
-          () => this.props.history.push('/')
+          () => this.props.history.push("/")
         );
+      })
+      .then(() => {
+        return fetch("https://evening-spire-18611.herokuapp.com/notes")
+          .then(res => {
+            if (res.ok) {
+              return res.json();
+            }
+            throw new Error(res.statusText);
+          })
+          .then(resJson => {
+            this.setState({
+              notes: resJson
+            });
+          });
       })
       .catch(error => {
         console.log(error);
       });
-  }
+  };
 
   render() {
     return (
@@ -180,7 +208,7 @@ class App extends React.Component {
           newNoteName: this.setNewNoteName,
           newNoteContent: this.setNewNoteContent,
           newNoteFolder: this.setNewNoteFolder,
-          newNote: this.handleAddNewNote,
+          newNote: this.handleAddNewNote
         }}
       >
         <div className="App">
@@ -188,27 +216,24 @@ class App extends React.Component {
           <Route exact path="/" component={MainSideBar} />
 
           <ErrorBoundryNotes>
+            <Route exact path="/" component={Main} />
 
-          <Route exact path="/" component={Main} />
-    
-          <Route
-            exact
-            path="/folder/:folderId"
-            render={props => (
-              <>
-                <MainSideBar match={props.match} />
-                <Main match={props.match} />
-              </>
-            )}
-          />
-          <Route exact path="/note/:noteId" component={Note} />
-          
+            <Route
+              exact
+              path="/folder/:folderId"
+              render={props => (
+                <>
+                  <MainSideBar match={props.match} />
+                  <Main match={props.match} />
+                </>
+              )}
+            />
+            <Route exact path="/note/:noteId" component={Note} />
           </ErrorBoundryNotes>
 
           <Route exact path="/addfolder" component={AddFolder} />
 
           <Route exact path="/addnote" component={AddNote} />
-
         </div>
       </StoreContext.Provider>
     );

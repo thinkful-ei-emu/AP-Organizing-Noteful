@@ -26,6 +26,7 @@ class Note extends React.Component {
     });
 
     return (
+
       <div key={note.id}>
         <div className="button-folder-container">
           <button
